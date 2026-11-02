@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#050404">
+  <title>Горизонт подій</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=1">
+</head>
+<body>
+  <canvas id="bg" aria-hidden="true"></canvas>
+
+  <header class="frame frame--top">
+    <span>Презентація</span>
+    <span class="frame__mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-3-6.2"/><path d="M17 2v4h-4"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 3-6.2"/><path d="M7 2v4h4"/></svg>
+    </span>
+    <span>2026</span>
+  </header>
+
+  <!--
+    Кожен слайд:
+      data-title   назва (у підказці біля точок і внизу справа)
+      data-top     велике слово на фоні зверху (порожньо = без слова)
+      data-bottom  велике слово на фоні знизу
+      data-cam     ракурс чорної діри: "відстань висота нахил x y яскравість"
+                     відстань  — 8 (впритул) … 40 (далеко)
+                     висота    — кут над диском у градусах (0 — з ребра, мінус — знизу)
+                     нахил     — поворот кадру в градусах
+                     x y       — де центр діри на екрані: -1…1 (0 0 — центр)
+                     яскравість — 1 = норма
+                   камера перелітає між ракурсами сама
+    .r  — текстові елементи, що з'являються каскадом
+    .rg — скляні елементи, що з'являються каскадом
+  -->
+  <main class="deck" id="deck">
+
+    <!-- 01 -->
+    <section class="slide" data-title="Обкладинка" data-type="strong" data-top="Презентація" data-cam="13 5 -30 0.3 -0.45 1.15">
+      <div class="hero">
+        <div class="glass pill rg"><span>Підзаголовок презентації</span><span class="muted">Автор · 2026</span></div>
+      </div>
+    </section>
+
+    <!-- 02 -->
+    <section class="slide" data-title="Вступ" data-type="strong" data-top="Вступ" data-cam="10 2 0 0 -1.15 1.05">
+      <div class="wrap stack center">
+        <p class="kicker r">Розділ 01</p>
+        <h1 class="display r">Заголовок<br>розділу</h1>
+        <p class="lead r">Короткий підзаголовок. Тут буде одне-два речення, що пояснюють, про що піде мова далі.</p>
+      </div>
+    </section>
+
+    <!-- 03 -->
+    <section class="slide" data-title="Проблема" data-bottom="проблема" data-cam="24 10 12 -0.6 -0.9 0.8">
+      <div class="wrap split">
+        <div class="stack">
+          <p class="kicker r">02 — Проблема</p>
+          <h2 class="h1 r">Що зараз не так</h2>
+          <p class="lead r">Місце для тексту. Опишіть ситуацію коротко й по суті — так, щоб читалося з останнього ряду.</p>
+        </div>
+        <div class="glass media rg"><span class="media__label">Місце для зображення</span></div>
+      </div>
+    </section>
+
+    <!-- 04 -->
+    <section class="slide" data-title="Рішення" data-top="Рішення" data-cam="30 14 0 0 -1.1 0.75">
+      <div class="wrap stack">
+        <p class="kicker r">03 — Рішення</p>
+        <h2 class="h1 r">Три ключові ідеї</h2>
+        <div class="cards" style="--cols:3">
+          <article class="glass card rg"><div class="card__top"><span class="glyph"></span><span class="card__num">01</span></div><div><h3 class="r">Перша ідея</h3><p class="r">Короткий опис у два рядки, щоб картка не була порожньою.</p></div></article>
+          <article class="glass card rg"><div class="card__top"><span class="glyph"></span><span class="card__num">02</span></div><div><h3 class="r">Друга ідея</h3><p class="r">Короткий опис у два рядки, щоб картка не була порожньою.</p></div></article>
+          <article class="glass card rg"><div class="card__top"><span class="glyph"></span><span class="card__num">03</span></div><div><h3 class="r">Третя ідея</h3><p class="r">Короткий опис у два рядки, щоб картка не була порожньою.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 -->
+    <section class="slide" data-title="Як це працює" data-bottom="процес" data-cam="20 -8 -15 0.9 0.7 0.8">
+      <div class="wrap stack">
+        <p class="kicker r">04 — Процес</p>
+        <h2 class="h1 r">Як це працює</h2>
+        <div class="cards" style="--cols:3">
+          <article class="glass card rg"><div class="card__top"><span class="card__num">Крок 1</span></div><div><h3 class="r">Назва кроку</h3><p class="r">Що відбувається на цьому етапі.</p></div></article>
+          <article class="glass card rg"><div class="card__top"><span class="card__num">Крок 2</span></div><div><h3 class="r">Назва кроку</h3><p class="r">Що відбувається на цьому етапі.</p></div></article>
+          <article class="glass card rg"><div class="card__top"><span class="card__num">Крок 3</span></div><div><h3 class="r">Назва кроку</h3><p class="r">Що відбувається на цьому етапі.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 -->
+    <section class="slide" data-title="Цифри" data-cam="16 4 0 0 0.05 1">
+      <div class="wrap stack center">
+        <p class="kicker r">05 — Цифри</p>
+        <div class="glass stat rg">
+          <div class="stat__num">87%</div>
+        </div>
+        <p class="lead r">Підпис до головної цифри — звідки вона і чому важлива.</p>
+      </div>
+    </section>
+
+    <!-- 07 -->
+    <section class="slide" data-title="Продукт" data-top="Продукт" data-cam="18 7 20 -0.55 0 0.9">
+      <div class="wrap split split--rev">
+        <div class="stack">
+          <p class="kicker r">06 — Продукт</p>
+          <h2 class="h1 r">Як він виглядає</h2>
+          <p class="lead r">Опис продукту або головного екрана. Зображення праворуч можна замінити на скриншот чи відео.</p>
+        </div>
+        <div class="glass glass--ember media rg"><div class="orb"></div></div>
+      </div>
+    </section>
+
+    <!-- 08 -->
+    <section class="slide" data-title="Можливості" data-bottom="можливості" data-cam="28 12 0 0 1.05 0.7">
+      <div class="wrap stack">
+        <p class="kicker r">07 — Можливості</p>
+        <h2 class="h1 r">Що він уміє</h2>
+        <div class="cards" style="--cols:4">
+          <article class="glass card rg"><span class="glyph"></span><div><h3 class="r">Функція</h3><p class="r">Один рядок опису.</p></div></article>
+          <article class="glass card rg"><span class="glyph"></span><div><h3 class="r">Функція</h3><p class="r">Один рядок опису.</p></div></article>
+          <article class="glass card rg"><span class="glyph"></span><div><h3 class="r">Функція</h3><p class="r">Один рядок опису.</p></div></article>
+          <article class="glass card rg"><span class="glyph"></span><div><h3 class="r">Функція</h3><p class="r">Один рядок опису.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09 -->
+    <section class="slide" data-title="Дизайн" data-type="strong" data-top="Дизайн" data-bottom="деталі" data-cam="12 9 0 0 0.8 1.05">
+      <div class="wrap stack center">
+        <p class="kicker r">Розділ 02</p>
+        <h1 class="display r">Розділ<br>про дизайн</h1>
+      </div>
+    </section>
+
+    <!-- 10 -->
+    <section class="slide" data-title="Технології" data-bottom="технології" data-cam="26 25 10 0.7 -0.6 0.8">
+      <div class="wrap split">
+        <div class="stack">
+          <p class="kicker r">08 — Технології</p>
+          <h2 class="h1 r">Що під капотом</h2>
+          <p class="lead r">Стек, інтеграції, інфраструктура — коротко й зрозуміло.</p>
+        </div>
+        <div class="glass media rg"><span class="media__label">Схема або логотипи</span></div>
+      </div>
+    </section>
+
+    <!-- 11 -->
+    <section class="slide" data-title="Порівняння" data-top="Було / стало" data-cam="34 6 0 0 0 0.8">
+      <div class="wrap stack">
+        <p class="kicker r">09 — Порівняння</p>
+        <h2 class="h1 r">Було і стало</h2>
+        <div class="cards" style="--cols:2">
+          <article class="glass card rg"><div class="card__top"><span class="card__num">Було</span></div><div><h3 class="r">Старий підхід</h3><p class="r">Що було не так і скільки це коштувало.</p></div></article>
+          <article class="glass glass--ember card rg"><div class="card__top"><span class="card__num">Стало</span></div><div><h3 class="r">Новий підхід</h3><p class="r">Що змінилося і який результат.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12 -->
+    <section class="slide" data-title="Команда" data-bottom="команда" data-cam="22 -6 0 -0.9 -0.8 0.75">
+      <div class="wrap stack">
+        <p class="kicker r">10 — Команда</p>
+        <h2 class="h1 r">Хто це робить</h2>
+        <div class="cards" style="--cols:4">
+          <article class="glass card rg"><span class="avatar"></span><div><h3 class="r">Ім'я</h3><p class="r">Роль</p></div></article>
+          <article class="glass card rg"><span class="avatar"></span><div><h3 class="r">Ім'я</h3><p class="r">Роль</p></div></article>
+          <article class="glass card rg"><span class="avatar"></span><div><h3 class="r">Ім'я</h3><p class="r">Роль</p></div></article>
+          <article class="glass card rg"><span class="avatar"></span><div><h3 class="r">Ім'я</h3><p class="r">Роль</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13 -->
+    <section class="slide" data-title="Дорожня карта" data-top="Далі" data-cam="40 3 -4 0 -0.2 0.8">
+      <div class="wrap stack">
+        <p class="kicker r">11 — Дорожня карта</p>
+        <h2 class="h1 r">Що далі</h2>
+        <div class="cards" style="--cols:4">
+          <article class="glass card rg"><div class="card__top"><span class="card__num">Q1</span></div><div><h3 class="r">Етап</h3><p class="r">Що буде зроблено.</p></div></article>
+          <article class="glass card rg"><div class="card__top"><span class="card__num">Q2</span></div><div><h3 class="r">Етап</h3><p class="r">Що буде зроблено.</p></div></article>
+          <article class="glass card rg"><div class="card__top"><span class="card__num">Q3</span></div><div><h3 class="r">Етап</h3><p class="r">Що буде зроблено.</p></div></article>
+          <article class="glass card rg"><div class="card__top"><span class="card__num">Q4</span></div><div><h3 class="r">Етап</h3><p class="r">Що буде зроблено.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 14 -->
+    <section class="slide" data-title="Цитата" data-cam="14 8 25 0.75 0.4 0.9">
+      <div class="wrap stack">
+        <span class="quote-mark r" aria-hidden="true">“</span>
+        <blockquote class="quote r">Місце для цитати, яка підсумовує головну думку презентації.</blockquote>
+        <p class="kicker r">Ім'я автора, посада</p>
+      </div>
+    </section>
+
+    <!-- 15 -->
+    <section class="slide" data-title="Дякую" data-type="strong" data-top="Дякую" data-bottom="за увагу" data-cam="12 4 30 -0.25 -0.45 1.15">
+      <div class="wrap stack center">
+        <div class="glass pill rg"><span>email@example.com</span><span class="muted">@username</span></div>
+      </div>
+    </section>
+
+  </main>
+
+  <nav class="dots" aria-label="Слайди">
+    <div class="glass dots__bg" data-refract="10" data-edge="10" data-blur="4"></div>
+    <div class="dots__list" id="dots-list"></div>
+    <div class="glass dots__lens" id="dots-lens" data-refract="14" data-edge="11" data-blur="0.4"></div>
+    <div class="glass dots__tip" id="dots-tip" data-refract="12" data-edge="12" aria-hidden="true"></div>
+  </nav>
+
+  <footer class="frame frame--bottom">
+    <span class="counter"><span class="swap" id="counter-cur">01</span> <span class="counter__total">/ <span id="counter-total">15</span></span></span>
+    <div class="glass glass--pill controls">
+      <button type="button" id="btn-prev" aria-label="Попередній слайд">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 15 6-6 6 6"/></svg>
+      </button>
+      <button type="button" id="btn-next" aria-label="Наступний слайд">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+    </div>
+    <span class="swap" id="slide-title">Обкладинка</span>
+  </footer>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs id="glass-defs"></defs></svg>
+
+  <script src="js/background.js?v=1"></script>
+  <script src="js/glass.js?v=1"></script>
+  <script src="js/deck.js?v=1"></script>
+</body>
+</html>
